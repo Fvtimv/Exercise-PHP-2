@@ -353,4 +353,4 @@ listeDeroulanteFormation($formations);
 
 echo "<br>";
 
-echo "<input style = 'margin-top: 25px' 'padding: 10px' type = submit name = submit> </input>";
+echo "<input style = 'margin-top: 25px; padding: 7px;' type = submit name = submit> </input>";

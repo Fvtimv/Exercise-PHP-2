@@ -354,3 +354,31 @@ listeDeroulanteFormation($formations);
 echo "<br>";
 
 echo "<input style = 'margin-top: 25px; padding: 7px;' type = submit name = submit> </input>";
+
+?>
+
+
+<h1>Exercice 11</h1>
+
+<p>Ecrire une fonction personnalisée qui affiche une date en français 
+    (en toutes lettres) à partir d’une chaîne de caractère représentant
+     une date.
+    Exemple :
+    formaterDateFr("2018-02-23");</p>
+
+<?php
+
+$date = ("2018-02-23");
+
+function formaterDateFr($date){
+    
+    $dateFormat = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL,
+    IntlDateFormatter::NONE);
+    $time = strtotime($date);  //change value of the string to be a type time
+    echo $dateFormat -> format($time);  //define the french format for the date $time
+
+}
+
+formaterDateFr("2018-02-23"); // ou formaterDateFr($date)
+
+?>

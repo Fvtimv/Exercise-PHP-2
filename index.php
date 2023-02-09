@@ -537,14 +537,36 @@ echo "<br>";
 echo $v1 -> getInformation();
 echo $v2 -> getInformation(); //ask why it shows 20 instead of 0 km/h
 
+
+
+
+
+// if ($this -> _marque === "Peugeot") {
+//   echo "Le véhicule veut accélérer de {$this -> _vitesseActuelle} km/h <br>";
+// } 
+
 ?>
 
 
 
-<!-- if ($this -> _marque === "Peugeot") {
-            echo "Le véhicule veut accélérer de {$this -> _vitesseActuelle} km/h <br>";
-        } -->
+<h1>Exercice 15</h1>
 
+<p>En utilisant les ressources de la page http://php.net/manual/fr/book.filter.php,
+     vérifier si une adresse e-mail a le bon format.
 
+L’adresse contact@elan est une adresse e-mail invalide</p>
 
+<?php
 
+$adresseMail = ("elan@elan-formation.fr");
+
+// FILTER_VALIDATE_EMAIL  pour valider l'adresse e-mail
+//filter_var() renvoie les données filtrées en cas de succès ou FALSE en cas d'échec
+
+if (filter_var ($adresseMail, FILTER_VALIDATE_EMAIL)){
+    echo "L'adresse $adresseMail est une adresse e-mail valide";
+} else {
+    echo "L'adresse e-mail n'est pas valide";
+}
+
+?>

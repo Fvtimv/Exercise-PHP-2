@@ -404,3 +404,147 @@ $tableauValeurs = array (true, "texte", 10, 25.369,
 
 ?>
 
+
+<h1>Exercice 13</h1>
+
+<p>Créer une classe Voiture possédant les propriétés suivantes : 
+    marque, modèle, nbPortes et vitesseActuelle ainsi que les 
+    méthodes demarrer( ), accelerer( ) et stopper( ) en plus des 
+    accesseurs (get) et mutateurs (set) traditionnels. La vitesse 
+    initiale de chaque véhicule instancié est de 0. Une méthode 
+    personnalisée pourra afficher toutes les informations d’un
+    véhicule.
+    v1 ➔ "Peugeot","408",5
+    v2 ➔ "Citroën","C4",3
+    Coder l’ensemble des méthodes, accesseurs et mutateurs de la 
+    classe tout en réalisant des jeux de tests pour vérifier 
+    la cohérence de la classe Voiture.</p>
+
+<?php
+
+class Voiture{
+    //attributs
+    private $_marque;
+    private $_modele;
+    private $_nbPortes;
+    private $_vitesseActuelle;
+    // private $_vitesseInitiale = 0;
+
+
+    public function __construct($marque, $modele, $nbPortes){
+        $this -> _marque = $marque;
+        $this -> _modele = $modele;
+        $this -> _nbPortes = $nbPortes;
+        $this -> _vitesseActuelle = 0;
+    }
+
+    //methodes
+
+    public function getMarque(){
+        return $this -> _marque;
+    }
+    public function setMarque($marque){
+        $this -> _marque = $marque;
+    }
+    public function getModele(){
+        return $this -> _modele;
+    }
+    public function setModele($modele){
+        $this -> _modele = $modele;
+    }
+    public function getNbPortes(){
+        return $this -> _nbPortes;
+    }
+    public function setNbPortes($nbPortes){
+        $this -> _nbPortes = $nbPortes;
+    }
+    public function getVitesseActuelle(){
+        return $this -> _vitesseActuelle;
+    }
+    public function setVitesseActuelle($vitesseActuelle){
+        $this -> _vitesseActuelle = $vitesseActuelle;
+    }
+
+    
+    public function demarrer(){
+        echo "Le véhicule {$this -> _marque} {$this -> _modele} 
+        démarre <br>";
+
+    }
+
+
+    public function accelerer($vitesseAcceleration){
+        $this -> _vitesseActuelle += $vitesseAcceleration;
+        echo "Le véhicule {$this -> _marque} {$this -> _modele} 
+        accélère de {$vitesseAcceleration} km/h <br>";
+       
+
+
+    }
+
+    
+    public function stopper(){
+        if ($this ->_vitesseActuelle){
+            $this -> _vitesseActuelle = 0;
+        } echo "Le véhicule {$this -> _marque} {$this ->_modele}
+        est stoppé <br>";
+    }
+
+    public function ralentir($vitesse){
+        echo "La vitesse du véhicule {$this -> _marque} 
+        {$this -> _modele} est de : {$vitesse} km / h <br>";
+    }
+
+
+
+
+
+    public function information(){
+        echo "Infos véhicule  {$this -> getMarque()}
+        {$this -> getModele()} <br> 
+        *************** <br>
+        Nom et modèle du véhicule: {$this -> getMarque()} {$this -> getModele()} <br>
+        Nombre de portes: {$this -> getNbPortes()} <br>";
+
+        if ($this -> _vitesseActuelle == 0){
+            echo "Le véhicule {$this -> getMarque()} est à l'arrêt <br>";
+            echo " Sa vitesse actuelle est de : {$this -> getVitesseActuelle()} km / h <br>";
+        } else {
+            echo "Le véhicule {$this -> getMarque()} est démarré <br>";
+            echo "Sa vitesse actuelle est de : {$this -> getVitesseActuelle()} km / h <br>";
+        }
+    }
+
+    public function getInformation(){
+        return $this -> information();
+    }
+}
+
+$v1 = new Voiture ("Peugeot", "408", 5);
+$v2 = new Voiture ("Citroën", "C4", 3);
+
+$v1 -> demarrer();
+$v1 -> accelerer(50);
+$v2 -> demarrer();
+$v2 -> stopper();
+$v2 -> accelerer(20); 
+$v2 -> demarrer();
+$v1 -> ralentir(50);
+$v2 -> ralentir(0);
+
+echo "<br>";
+
+echo $v1 -> getInformation();
+echo $v2 -> getInformation(); //ask why it shows 20 instead of 0 km/h
+
+?>
+
+
+
+<!-- if ($this -> _marque === "Peugeot") {
+            echo "Le véhicule veut accélérer de {$this -> _vitesseActuelle} km/h <br>";
+        } -->
+
+
+
+
